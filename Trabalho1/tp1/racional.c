@@ -39,6 +39,8 @@ struct racional sorteia_r (long min, long max) {
 }
 
 void imprime_r (struct racional r){    
+   
+   r = simplifica_r(r);
 
    if (!valido_r(r)){
       printf("INVALIDO"); // Se o racional nao for real, imprime INVALIDO
