@@ -26,10 +26,10 @@ int valido_r (struct racional r){
    return (1);
 }
 
+// Sorteia numerador e denominador entre min e max
 struct racional sorteia_r (long min, long max) {
    struct racional sorteado;
 
-   // Sorteia numerador e denominador entre min e max
    sorteado.num = aleat (min, max); 
    sorteado.den = aleat (min, max); 
 
@@ -38,6 +38,8 @@ struct racional sorteia_r (long min, long max) {
    return (sorteado);
 }
 
+/* Imprimw racional com base em criterios 
+definidos no arquivo de cabecalho */
 void imprime_r (struct racional r){    
    
    r = simplifica_r(r);
@@ -62,33 +64,38 @@ void imprime_r (struct racional r){
    }
 } 
 
+/* Para realizar a soma, multiplico o numerador e o denominador pelo mmc
+e depois faço a operacao normalmente*/
 struct racional soma_r (struct racional r1, struct racional r2){
    struct racional resul_soma;
    long MMC;
 
    MMC = mmc (r1.den, r2.den); // Calcula mmc
 
-   /* Para realizar a soma, multiplico o numerador e o denominador pelo mmc
-   e depois faço a operacao normalmente*/
    resul_soma.num = (MMC / r1.den)*r1.num + (MMC / r2.den)*r2.num;
    resul_soma.den = MMC;
-	
+
+   resul_soma = simplifica_r(resul_soma);
+   
    return (resul_soma);
 }
 
+/* Repete o mesmo processo da soma porem com o sinal 
+oposto na segunda fracao*/
 struct racional subtrai_r (struct racional r1, struct racional r2){
    struct racional resul_sub;
    long MMC;
 
-   /* Repete o mesmo processo da soma porem com o sinal 
-   oposto na segunda fracao*/
-   MMC = mmc (r1.den, r2.den);
+   MMC = mmc (r1.den, r2.den); // Calcula mmc
    resul_sub.num = (MMC / r1.den)*r1.num - (MMC / r2.den)*r2.num;
    resul_sub.den = MMC;
+
+   resul_sub = simplifica_r(resul_sub);
 
    return (resul_sub);
 }
 
+/* Multiplica os racionais*/
 struct racional multiplica_r (struct racional r1, struct racional r2){
    struct racional resul_mult;
 
@@ -108,9 +115,14 @@ struct racional multiplica_r (struct racional r1, struct racional r2){
       resul_mult.den = 0;
    }
 
+   resul_mult = simplifica_r(resul_mult); 
+
    return (resul_mult);
 }
 
+/* Executa divisao entre os racional
+Inverte o segundo racional e executa uma 
+multiplicacao*/
 struct racional divide_r (struct racional r1, struct racional r2){
    struct racional resul_div;
 
@@ -130,6 +142,8 @@ struct racional divide_r (struct racional r1, struct racional r2){
       resul_div.num = 1;
       resul_div.den = 0;  // Inválido
    }
+
+   resul_div = simplifica_r(resul_div);
 
    return (resul_div);
 }
