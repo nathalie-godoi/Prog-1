@@ -8,12 +8,12 @@ long mmc (long a, long b);
 
 /* Cria um número racional com o numerador e denominador indicados. */
 struct racional cria_r (long numerador, long denominador){
-   struct racional novo_racional;
+   struct racional novo_r;
 
-   novo_racional.num = numerador;
-   novo_racional.den = denominador;
+   novo_r.num = numerador;
+   novo_r.den = denominador;
 
-   return (novo_racional);
+   return (novo_r);
 }
 /* Retorna 0 se denominador for invalido, ou seja, 
 igual a 0, e 1 se for valido*/
@@ -38,11 +38,9 @@ struct racional sorteia_r (long min, long max) {
    return (sorteado);
 }
 
-/* Imprimw racional com base em criterios 
+/* Imprime racional com base em criterios 
 definidos no arquivo de cabecalho */
 void imprime_r (struct racional r){    
-   
-   r = simplifica_r(r);
 
    if (!valido_r(r)){
       printf("INVALIDO"); // Se o racional nao for real, imprime INVALIDO

@@ -12,13 +12,15 @@ int main ()
 
    scanf("%d %d", &n, &max);    
 
+   // Repete n vezes caso siga todos os criterios
    for (i = 1; i <= n; i++) {
       printf("%d: ", i);
 
       r1 = sorteia_r(-max, max); // Sorteia racional
       r2 = sorteia_r(-max, max); 
 
-      imprime_r(r1);
+      // Imprime racionais 
+      imprime_r(r1); 
       printf(" ");
       imprime_r(r2);
       printf(" ");
