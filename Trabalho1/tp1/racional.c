@@ -51,7 +51,7 @@ void imprime_r (struct racional r){
          printf("0"); // Se o numerador for nulo, imprime 0
       else {
          if (r.den == 1)
-            printf("%ld", r.num); // Se o denominador for 1, imprime apenas o denominador 
+            printf("%ld", r.num); // Se o denominador for 1, imprime apenas o numerador 
          else {
             if (r.num == r.den)
                printf("1"); // Se o denominador e o numerador forem iguais, imprime 1

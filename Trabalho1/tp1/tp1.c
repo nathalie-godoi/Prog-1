@@ -39,7 +39,7 @@ int main ()
 
       // Verifica se a divisao eh valida
       if (!valido_r(div)){
-         printf("DIVISAO INVALIDA \n");
+         printf("DIVISAO INVALIDA\n");
          return (1);
       }
 
