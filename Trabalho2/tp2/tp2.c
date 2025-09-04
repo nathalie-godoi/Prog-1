@@ -4,59 +4,108 @@
 #include <stdlib.h>
 #include "racional.h"
 
-struct racional simplifica_r(struct racional r);
+// Cabecalho de funcoes auxiliares
+void imprime_vetor(int tam, struct racional v[]);
+void retira_r(int i, int n, struct racional vetor[]);
+void ordena_vetor(int tam, struct racional vetor[]);
 
+// Programa principal
 int main (){
-   int n, novo_n = 0, invalido = 0;
-   struct racional vetor[MAX];
-   
-   scanf("%d", &n); // Le quantidade de racionais 
+   int n, tam, invalido = 0;
+   struct racional vetor[MAX], soma, *ptr_soma ;
+   long num, den;
+
+   // Inicializa soma e seu ponteiro
+   soma.num = 0;
+   soma.den = 1;
+   ptr_soma = &soma;
+
+   // Le a quantidade de racionais que formarao o vetor
+   scanf("%d", &n); 
    
    // Le o vetor de racionais e os simplifica 
    for ( int i = 0; i < n; i++){ 
-      scanf("%ld %ld", &vetor[i].num, &vetor[i].den);
-      vetor[i] = simplifica_r (vetor[i]);
+      scanf("%ld %ld", &num, &den);
+      vetor[i] = cria_r (num, den);
    }
    
    // Imprime o vetor completo
    printf("VETOR = ");
-   for ( int i = 0; i < n; i++){ 
-      imprime_r(vetor[i]);
-      printf(" ");
+   imprime_vetor(n, vetor);
+   
+   // Conta a quantidades de numeros invalidos
+   for ( int i = 0; i < n; i++){
+      if (!(valido_r(vetor[i])))
+         invalido++;
    }
 
-   printf("\n");
-   
    // Retira os racionais invalidos
-   printf("VETOR = ");
-   for ( int i = 0; i < n-invalido; i++){
-      if (!valido_r(vetor[i])){
-         invalido++;
+   for ( int i = 0; i < n; i++){
+      if (!valido_r(vetor[i]))
          /* Substitui o racional invalido do inicio 
-          por um racional valido do final*/
-         for ( int j = n - 1; i < n; j--) {
-            if (valido_r(vetor[j])){
-               vetor[i] = vetor[j];
-               vetor[j].den = 0;
-               break;
-            };
-         };
-      };
-   };
-   
-   novo_n = n - invalido;
+            por um racional valido do final */
+         retira_r(i, n, vetor); 
+   }
+
+   // Calcula o novo tamanho do vetor sem os valores invalidos
+   tam = n - invalido; 
 
    // Imprime o vetor sem os racionais invalidos
-   for (int i = 0; i < novo_n; i++) {
-      if (valido_r(vetor[i])) {
-         imprime_r(vetor[i]);
-        printf(" ");
-      }
-   }
-   printf("\n");
+   printf("VETOR = ");
+   imprime_vetor(tam, vetor);
    
    // Ordena o vetor
-   
+   ordena_vetor(tam, vetor);
+
    // Imprime o vetor ordenado
+   printf("VETOR = ");
+   imprime_vetor(tam, vetor);
+
+   // Calcula a soma dos elementos do vetor
+   for ( int i = 0; i < tam; i++)
+      soma_r(soma, vetor[i], ptr_soma);
+
+   // Imprime a soma dos valores no vetor 
+   printf("SOMA = ");
+   imprime_r(soma);
+   printf("\n");
+
    return (0) ;
+}
+
+/* Funcoes auxiliares */
+/* Imprime os elementos do vetor */
+void imprime_vetor (int tam, struct racional v[]){
+   for ( int i = 0; i < tam; i++){
+      imprime_r(v[i]);
+      printf(" ");
+   }
+   printf("\n");
+}
+
+void retira_r ( int i, int n, struct racional vetor[]) {
+   for ( int j = n - 1; j > i; j--) {
+      if (valido_r(vetor[j])){
+         vetor[i] = vetor[j];
+         vetor[j].den = 0;
+         break;
+       }
+   }
+}
+
+void ordena_vetor (int tam, struct racional vetor[]){
+   for (int i = 0; i < tam; i++){
+      struct racional aux;
+      int menor = i;
+
+      // Encontra menor valor no vetor
+      for ( int j = i + 1; j < tam; j++)
+         if (compara_r(vetor[menor], vetor[j]) == 1)
+            menor = j;
+
+      // Substitui o v[i] pelo menor valor
+      aux = vetor[i];
+      vetor[i] = vetor[menor];
+      vetor[menor] = aux;
+   }
 }

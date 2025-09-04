@@ -20,6 +20,8 @@ struct racional cria_r (long numerador, long denominador){
 
    novo_r.num = numerador;
    novo_r.den = denominador;
+   
+   novo_r = simplifica_r(novo_r);
 
    return novo_r;
 }
@@ -167,7 +169,7 @@ int compara_r (struct racional r1, struct racional r2){
       return 1;
    
    // Retorna -1 se r1 < r2
-   return 1;
+   return -1;
 }
 
 /* Retorna a soma dos racionais r1 e r2 no parametro *r3 */
