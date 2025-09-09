@@ -16,8 +16,7 @@ int main (){
    long num, den;
 
    // Inicializa soma e seu ponteiro
-   soma.num = 0;
-   soma.den = 1;
+   soma = cria_r(0, 1);
    ptr_soma = &soma;
 
    // Le a quantidade de racionais que formarao o vetor
@@ -42,8 +41,8 @@ int main (){
    // Retira os racionais invalidos
    for ( int i = 0; i < n; i++){
       if (!valido_r(vetor[i]))
-         /* Substitui o racional invalido do inicio 
-            por um racional valido do final */
+         /* Caso nao seja valido, substitui-o por 
+         um racional valido do final do vetor*/
          retira_r(i, n, vetor); 
    }
 
@@ -83,6 +82,7 @@ void imprime_vetor (int tam, struct racional v[]){
    printf("\n");
 }
 
+// Remove os racionais invalidos 
 void retira_r ( int i, int n, struct racional vetor[]) {
    for ( int j = n - 1; j > i; j--) {
       if (valido_r(vetor[j])){
@@ -93,6 +93,7 @@ void retira_r ( int i, int n, struct racional vetor[]) {
    }
 }
 
+// Ordena o vetor usando select sort
 void ordena_vetor (int tam, struct racional vetor[]){
    for (int i = 0; i < tam; i++){
       struct racional aux;
