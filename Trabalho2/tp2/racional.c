@@ -49,10 +49,8 @@ long aleat (long min, long max){
 /* Máximo Divisor Comum entre a e b      */
 long mdc (long a, long b){
    // Transforma a e b em valores absolutos
-   if (a < 0)
-      a = -a;
-   if (b < 0)
-      b = -b;
+   a = labs(a);
+   b = labs(b);
 
    // Caso um deles seja = 0, o mdc é o outro
    if (a == 0)
@@ -80,8 +78,7 @@ long mmc (long a, long b){
    MDC = mdc(p, q);
    MMC = (p * q) / MDC; // Calcula MMC
 
-   if (MMC < 0)
-      MMC = -MMC; // Transforma em valor absoluto
+   MMC = labs(MMC); // Transforma em valor absoluto
 
    return MMC;
 }

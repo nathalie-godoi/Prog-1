@@ -1,4 +1,4 @@
-#define  MAX 100
+#define  MAX 100 // Maximo tamanho do vetor
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +22,10 @@ int main (){
    // Le a quantidade de racionais que formarao o vetor
    scanf("%d", &n); 
    
+   // Caso n nao satisfaça 1 < n < 100 retorna 0
+   if (!(1 < n && n < 100)) 
+      return 0;
+
    // Le o vetor de racionais e os simplifica 
    for ( int i = 0; i < n; i++){ 
       scanf("%ld %ld", &num, &den);
@@ -69,7 +73,7 @@ int main (){
    imprime_r(soma);
    printf("\n");
 
-   return (0) ;
+   return 0 ;
 }
 
 /* Funcoes auxiliares */
