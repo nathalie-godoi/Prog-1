@@ -5,6 +5,7 @@
 /* Cabecalho das funcoes auxiliares*/
 void imprime_vetor(int tam, struct racional **v);
 void ordena(struct racional **v, int tam);
+void substitui(struct racional **v, int i, int n);
 
 /* programa principal */
 int main ()
@@ -39,19 +40,9 @@ int main ()
          invalido++;
    
    // Substitui racional invalido do inicio por um valido do fim
-   for (int i = 0; i < n; i++){
-      if (!valido_r(vetor_ptr[i])){
-         for (int j = n - 1; j >= i; j--){
-            struct racional *aux = NULL;
-            if (valido_r(vetor_ptr[j])){
-               aux = vetor_ptr[j];
-               vetor_ptr[j] = vetor_ptr[i];
-               vetor_ptr[i] = aux;
-               break;
-            }
-         }
-      }
-   }
+   for (int i = 0; i < n; i++)
+      if (!valido_r(vetor_ptr[i]))
+         substitui(vetor_ptr, i, n);
    
    // Remove racionais invalidos
    for (int i = n - invalido; i < n; i++)
@@ -115,6 +106,21 @@ void imprime_vetor(int tam, struct racional **v){
    if (tam > 0)
       imprime_r(v[tam-1]);
    printf("\n");
+}
+
+/* Substitui racional invalido do comeco por 
+um racional valido do fim do vetor */
+void substitui(struct racional **v, int i, int n){
+   // Percorre do fim ao inicio procurando um racional valido
+   for (int j = n - 1; j >= i; j--){
+      struct racional *aux = NULL;
+      if (valido_r(v[j])){
+         aux = v[j];
+         v[j] = v[i];
+         v[i] = aux;
+         break;
+      }
+   }
 }
 
 /* Ordena o vetor usando Select Sort */
