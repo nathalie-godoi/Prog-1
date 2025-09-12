@@ -3,15 +3,15 @@
 #include "racional.h"
 
 /* Cabecalho das funcoes auxiliares*/
+void le_vetor(struct racional **vetor_ptr, int n);
 void imprime_vetor(int tam, struct racional **v);
 void ordena(struct racional **v, int tam);
-void substitui(struct racional **v, int i, int n);
+void remove_invalidos(struct racional **vetor_ptr, int *n);
+void calcula_soma(struct racional *soma, struct racional **vetor_ptr, int n); 
 
 /* programa principal */
-int main ()
-{  
-   int n, invalido = 0;
-   long num, den;
+int main (){  
+   int n;
    struct racional *soma = cria_r(0, 1);
    
    // Le a quantidade de racionais 
@@ -19,39 +19,21 @@ int main ()
    
    // Testa se n satisfaz 0 < n < 100
    if (!(0 < n && n < 100)) 
-      return 0;
+      return 1;
    
    // Aloca dinamicamente um ponteiro de ponteiros que apontam para racionais
    struct racional **vetor_ptr = malloc(n * sizeof(struct racional *));
 
    // Preenche o vetor
-   for (int i = 0; i < n; i++){
-      scanf("%ld %ld", &num, &den);
-      vetor_ptr[i] = cria_r(num, den);
-   }
+   le_vetor(vetor_ptr, n);
    
    // Imprime vetor completo
    printf("VETOR = ");
    imprime_vetor(n, vetor_ptr);
    
-   // Calcula quantidade de invalidos
-   for (int i = 0; i < n; i++)
-      if (!valido_r(vetor_ptr[i]))
-         invalido++;
-   
-   // Substitui racional invalido do inicio por um valido do fim
-   for (int i = 0; i < n; i++)
-      if (!valido_r(vetor_ptr[i]))
-         substitui(vetor_ptr, i, n);
-   
    // Remove racionais invalidos
-   for (int i = n - invalido; i < n; i++)
-      if (!valido_r(vetor_ptr[i]))
-         destroi_r(&vetor_ptr[i]);
+   remove_invalidos(vetor_ptr, &n);
    
-   // Corrige o tamanho do vetor
-   n = n - invalido;
-
    // Imprime vetor sem invalidos
    printf("VETOR = ");
    imprime_vetor(n, vetor_ptr);
@@ -64,8 +46,7 @@ int main ()
    imprime_vetor(n, vetor_ptr);
 
    // Calcula Soma
-   for (int i = 0; i < n; i++)
-      soma_r(soma, vetor_ptr[i], soma);
+   calcula_soma(soma, vetor_ptr, n);
 
    // Imprime soma
    printf("SOMA = ");
@@ -93,6 +74,7 @@ int main ()
    return 0;
 }
 
+/* Funcoes Auxiliares */
 /* Imprime os racionais apontados pelo vetor */
 void imprime_vetor(int tam, struct racional **v){
    /* Percorre o vetor de ponteiros e imprime 
@@ -109,19 +91,22 @@ void imprime_vetor(int tam, struct racional **v){
    printf("\n");
 }
 
-/* Substitui racional invalido do comeco por 
-um racional valido do fim do vetor */
-void substitui(struct racional **v, int i, int n){
-   // Percorre do fim ao inicio procurando um racional valido
-   for (int j = n - 1; j >= i; j--){
-      struct racional *aux = NULL;
-      if (valido_r(v[j])){
-         aux = v[j];
-         v[j] = v[i];
-         v[i] = aux;
-         break;
-      }
-   }
+/* Remove os racionais invalidos */
+void remove_invalidos(struct racional **vetor_ptr, int *n){
+   int j = 0; 
+   
+   // Copia os valores validos para o inicio do vetor
+   for (int i = 0; i < *n; i++)
+         if (valido_r(vetor_ptr[i]))
+            vetor_ptr[j++] = vetor_ptr[i];
+
+   // Libera racionais invalidos
+   for (int i = j; i < *n; i++)
+      if (!valido_r(vetor_ptr[i]))
+         destroi_r(&vetor_ptr[i]);
+
+   // Corrige o tamanho do vetor
+   *n = j;
 }
 
 /* Ordena o vetor usando Select Sort */
@@ -141,6 +126,23 @@ void ordena(struct racional **v, int tam){
       p_aux = v[i];
       v[i] = v[menor];
       v[menor] = p_aux;
+   }
+}
+
+/* Calcula soma de todos os elementos do vetor */
+void calcula_soma(struct racional *soma, struct racional **vetor_ptr, int n){
+ // Percorre o vetor e realiza a soma
+ for (int i = 0; i < n; i++)
+    soma_r(soma, vetor_ptr[i], soma);
+}
+
+/* Le vetor de ponteiros de racionais */
+void le_vetor(struct racional **vetor_ptr, int n){
+   long num, den;
+   // Preenche o vetor
+   for (int i = 0; i < n; i++){
+      scanf("%ld %ld", &num, &den);
+      vetor_ptr[i] = cria_r(num, den);
    }
 }
 

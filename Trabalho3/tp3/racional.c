@@ -129,25 +129,15 @@ int valido_r (struct racional *r){
 void imprime_r (struct racional *r){
    if (r == NULL)
       printf("NULL"); // Se ponteiro nao foi alocado imprime NULL
-   else {
-      if (valido_r(r) == 0)
+   else if (valido_r(r) == 0)
          printf("NaN"); // Se for invalido imprime NaN (Not a Number)
-      else { 
-         if (r->num == 0)
-            printf("0"); // Se for uma fracao nula imprime 0
-         else { 
-            if (r->den == 1) // Se denominador for 1 imprime soh o numerador
-               printf("%ld", r->num);
-            else { 
-               if (r->num == r->den) // Se os fatores forem iguais imprime 1
-                  printf("1");
-               else {
-                  printf("%ld/%ld", r->num, r->den); // Imprime a fracao
-               }
-            }
-         }
-      }
-   }
+   else if (r->num == 0)
+         printf("0"); // Se for uma fracao nula imprime 0
+   else if (r->den == 1) // Se denominador for 1 imprime soh o numerador
+         printf("%ld", r->num);
+   else if (r->num == r->den) // Se os fatores forem iguais imprime 1
+         printf("1");
+   else printf("%ld/%ld", r->num, r->den); // Imprime a fracao      
 }
 
 /* Compara dois números racionais r1 e r2*/
