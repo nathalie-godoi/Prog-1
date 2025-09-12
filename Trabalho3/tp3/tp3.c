@@ -93,6 +93,7 @@ int main ()
    return 0;
 }
 
+/* Imprime os racionais apontados pelo vetor */
 void imprime_vetor(int tam, struct racional **v){
    /* Percorre o vetor de ponteiros e imprime 
    o racional apontado por cada um */
@@ -101,8 +102,8 @@ void imprime_vetor(int tam, struct racional **v){
       printf(" ");
    }
    
-   /*Imprime o ultimo elemento separado
-   para nao ter um espaco extra*/
+   /*Imprime o ultimo elemento separado se o tamanho 
+   for maior que 0 para evitar um espaco extra no fim*/
    if (tam > 0)
       imprime_r(v[tam-1]);
    printf("\n");

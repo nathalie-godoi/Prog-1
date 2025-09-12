@@ -83,9 +83,9 @@ long denominador_r (struct racional r){
    return r.den;
 }
 
-/* Cria um número racional com o numerador e denominador indicados*/
+/* Cria um numero racional com o numerador e denominador indicados*/
 struct racional *cria_r (long numerador, long denominador){
-   // Aloca a struct racional r
+   // Aloca o ponteiro r que aponta para uma struct racional
    struct racional *r = malloc(sizeof(struct racional));
    
    // Verifica se a alocacao ocorreu corretamenta 
@@ -103,7 +103,7 @@ struct racional *cria_r (long numerador, long denominador){
    return r;
 }
 
-/* Libera a memória alocada para o racional apontado por r */
+/* Libera a memoria alocada para o racional apontado por r */
 void destroi_r (struct racional **r){
    if (r != NULL && *r != NULL){
       free(*r);
@@ -111,9 +111,9 @@ void destroi_r (struct racional **r){
    }
 }
 
-// Testa se o racional é valido e se foi alocado
+// Testa se o racional eh valido e se foi alocado
 int valido_r (struct racional *r){
-   // Retorna 0 se o racional nao estiver alocado
+   // Retorna 0 se o racional nao esta alocado
    if (r == NULL) 
       return 0;
    
@@ -125,10 +125,10 @@ int valido_r (struct racional *r){
    return 1;
 }
 
-// Imprime o racional baseado em critérios pre-definidos
+// Imprime o racional baseado em criterios pre-definidos
 void imprime_r (struct racional *r){
    if (r == NULL)
-      printf("NULL"); // Se ponteiro for nulo imprime NULL
+      printf("NULL"); // Se ponteiro nao foi alocado imprime NULL
    else {
       if (valido_r(r) == 0)
          printf("NaN"); // Se for invalido imprime NaN (Not a Number)
@@ -136,13 +136,13 @@ void imprime_r (struct racional *r){
          if (r->num == 0)
             printf("0"); // Se for uma fracao nula imprime 0
          else { 
-            if (r->den == 1) // Se denominador for 1 imprime so o numerador
+            if (r->den == 1) // Se denominador for 1 imprime soh o numerador
                printf("%ld", r->num);
             else { 
                if (r->num == r->den) // Se os fatores forem iguais imprime 1
                   printf("1");
                else {
-                  printf("%ld/%ld", r->num, r->den); // Se for valido
+                  printf("%ld/%ld", r->num, r->den); // Imprime a fracao
                }
             }
          }
