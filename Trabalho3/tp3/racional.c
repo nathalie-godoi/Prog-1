@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "racional.h"
 
-// Define a struct racional
+/* Define a struct racional */
 struct racional {
    long num;          /* numerador   */
    long den;          /* denominador */
@@ -83,7 +83,7 @@ long denominador_r (struct racional r){
    return r.den;
 }
 
-/* Cria um numero racional com o numerador e denominador indicados*/
+/* Cria um numero racional com o numerador e denominador indicados */
 struct racional *cria_r (long numerador, long denominador){
    // Aloca o ponteiro r que aponta para uma struct racional
    struct racional *r = malloc(sizeof(struct racional));
@@ -111,7 +111,7 @@ void destroi_r (struct racional **r){
    }
 }
 
-// Testa se o racional eh valido e se foi alocado
+/* Testa se o racional eh valido e se foi alocado */
 int valido_r (struct racional *r){
    // Retorna 0 se o racional nao esta alocado
    if (r == NULL) 
@@ -125,22 +125,23 @@ int valido_r (struct racional *r){
    return 1;
 }
 
-// Imprime o racional baseado em criterios pre-definidos
+/* Imprime o racional baseado em criterios pre-definidos */
 void imprime_r (struct racional *r){
    if (r == NULL)
       printf("NULL"); // Se ponteiro nao foi alocado imprime NULL
    else if (valido_r(r) == 0)
-         printf("NaN"); // Se for invalido imprime NaN (Not a Number)
+      printf("NaN"); // Se for invalido imprime NaN (Not a Number)
    else if (r->num == 0)
-         printf("0"); // Se for uma fracao nula imprime 0
+      printf("0"); // Se for uma fracao nula imprime 0
    else if (r->den == 1) // Se denominador for 1 imprime soh o numerador
-         printf("%ld", r->num);
+      printf("%ld", r->num);
    else if (r->num == r->den) // Se os fatores forem iguais imprime 1
-         printf("1");
-   else printf("%ld/%ld", r->num, r->den); // Imprime a fracao      
+      printf("1");
+   else 
+      printf("%ld/%ld", r->num, r->den); // Imprime a fracao      
 }
 
-/* Compara dois números racionais r1 e r2*/
+/* Compara dois números racionais r1 e r2 */
 int compara_r (struct racional *r1, struct racional *r2){
    long MMC;
 
@@ -163,7 +164,7 @@ int compara_r (struct racional *r1, struct racional *r2){
    return -1;
 }
 
-/* Coloca em *r3 a soma simplificada dos racionais *r1 e *r2*/
+/* Coloca em *r3 a soma simplificada dos racionais *r1 e *r2 */
 int soma_r (struct racional *r1, struct racional *r2, struct racional *r3){
    long MMC;
    
@@ -190,7 +191,7 @@ int soma_r (struct racional *r1, struct racional *r2, struct racional *r3){
    return 1;
 }
 
-/* Coloca em *r3 a diferença simplificada dos racionais *r1 e *r2.*/
+/* Coloca em *r3 a diferença simplificada dos racionais *r1 e *r2 */
 int subtrai_r (struct racional *r1, struct racional *r2, struct racional *r3){
    long MMC;
    
@@ -217,7 +218,7 @@ int subtrai_r (struct racional *r1, struct racional *r2, struct racional *r3){
    return 1;
 }
 
-/* Coloca em *r3 o produto simplificado dos racionais *r1 e *r2*/
+/* Coloca em *r3 o produto simplificado dos racionais *r1 e *r2 */
 int multiplica_r (struct racional *r1, struct racional *r2, struct racional *r3){
    // Retorna 0 se algum dos racionais nao for valido
    if (!(valido_r(r1) && valido_r(r2)))
@@ -235,7 +236,7 @@ int multiplica_r (struct racional *r1, struct racional *r2, struct racional *r3)
    return 1;
 }
 
-/* Coloca em *r3 a divisão simplificada do racional *r1 por *r2*/
+/* Coloca em *r3 a divisão simplificada do racional *r1 por *r2 */
 int divide_r (struct racional *r1, struct racional *r2, struct racional *r3){
    // Retorna 0 se algum dos racionais nao for valido
    if (!(valido_r(r1) && valido_r(r2)))
