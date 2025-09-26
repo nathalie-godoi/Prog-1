@@ -19,10 +19,10 @@
 struct racional;
 
 /* Retorna o numerador do racional r */
-long numerador_r (struct racional r);
+long numerador_r (struct racional *r);
 
 /* Retorna o denominador do racional r */
-long denominador_r (struct racional r);
+long denominador_r (struct racional *r);
 
 /* Cria um número racional com o numerador e denominador indicados
  * e retorna um ponteiro que aponta para ele.

@@ -74,13 +74,13 @@ int simplifica_r (struct racional *r){
 }
 
 /* Retorna o numerador do racional r */
-long numerador_r (struct racional r){
-   return r.num;
+long numerador_r (struct racional *r){
+   return r->num;
 }
 
 /* Retorna o denominador do racional r */
-long denominador_r (struct racional r){
-   return r.den;
+long denominador_r (struct racional *r){
+   return r->den;
 }
 
 /* Cria um numero racional com o numerador e denominador indicados */
