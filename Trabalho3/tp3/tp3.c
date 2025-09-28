@@ -12,7 +12,6 @@ void calcula_soma(struct racional *soma, struct racional **vetor_ptr, int n);
 /* programa principal */
 int main (){  
    int n;
-   struct racional *soma = cria_r(0, 1);
    
    // Le a quantidade de racionais 
    scanf("%d", &n);
@@ -46,6 +45,7 @@ int main (){
    imprime_vetor(n, vetor_ptr);
 
    // Calcula Soma
+   struct racional *soma = cria_r(0, 1);
    calcula_soma(soma, vetor_ptr, n);
 
    // Imprime soma
