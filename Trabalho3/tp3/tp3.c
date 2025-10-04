@@ -130,10 +130,13 @@ void ordena(struct racional **v, int tam){
 
 /* Calcula soma de todos os elementos do vetor */
 void calcula_soma(struct racional *soma, struct racional **vetor_ptr, int n){
- 
- // Percorre o vetor e realiza a soma
- for (int i = 0; i < n; i++)
-    soma_r(soma, vetor_ptr[i], soma);
+   // Se a soma nao foi alocada retorna 0
+   if (soma == NULL)
+      return;
+
+   // Percorre o vetor e realiza a soma
+   for (int i = 0; i < n; i++)
+      soma_r(soma, vetor_ptr[i], soma);
 }
 
 /* Le vetor de ponteiros de racionais */
