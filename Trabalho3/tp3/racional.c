@@ -220,6 +220,11 @@ int subtrai_r (struct racional *r1, struct racional *r2, struct racional *r3){
 
 /* Coloca em *r3 o produto simplificado dos racionais *r1 e *r2 */
 int multiplica_r (struct racional *r1, struct racional *r2, struct racional *r3){
+    
+   // Retorna 0 se o ponteiro nao foi alocado
+   if (r3 == NULL) 
+      return 0;
+   
    // Retorna 0 se algum dos racionais nao for valido
    if (!(valido_r(r1) && valido_r(r2)))
       return 0;
@@ -238,6 +243,11 @@ int multiplica_r (struct racional *r1, struct racional *r2, struct racional *r3)
 
 /* Coloca em *r3 a divisão simplificada do racional *r1 por *r2 */
 int divide_r (struct racional *r1, struct racional *r2, struct racional *r3){
+    
+   // Retorna 0 se o ponteiro nao foi alocado
+   if (r3 == NULL) 
+      return 0;
+
    // Retorna 0 se algum dos racionais nao for valido
    if (!(valido_r(r1) && valido_r(r2)))
       return 0;

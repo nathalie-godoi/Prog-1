@@ -90,20 +90,25 @@ void imprime_vetor(int tam, struct racional **v){
 
 /* Remove os racionais invalidos */
 void remove_invalidos(struct racional **vetor_ptr, int *n){
-   int j = 0; 
+   int i = 0;
+   int fim = *n - 1;
    
-   // Copia os valores validos para o inicio do vetor
-   for (int i = 0; i < *n; i++){
-         if (valido_r(vetor_ptr[i])){
-            vetor_ptr[j++] = vetor_ptr[i];
-         }
-         else {
-            destroi_r(&vetor_ptr[i]);
-         }
+   while (i <= fim) {
+      if (valido_r(vetor_ptr[i])) 
+         i++;
+      else {
+         destroi_r(&vetor_ptr[i]);
+         // Troca pelo racional do final
+         if (i != fim) 
+            vetor_ptr[i] = vetor_ptr[fim];
+         // Libera o ponteiro do fim
+         vetor_ptr[fim] = NULL;
+         fim--;
+      }
    }
 
-   // Atualiza o numero de validos
-   *n = j;
+   // Atualiza o número de elementos válidos
+   *n = i;
 }
 
 /* Ordena o vetor usando Select Sort */
