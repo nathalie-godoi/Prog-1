@@ -96,14 +96,14 @@ int fprio_insere (struct fprio_t *f, void *item, int tipo, int prio){
    atual = f->prim;
    struct fpnodo_t *ant = NULL;
    /* Encontra pos pro nodo */
-   while(atual != NULL && atual->prio < prio){
+   while(atual != NULL && atual->prio <= prio){
       ant = atual;
       atual = atual->prox;
    }
-   while(atual != NULL && atual->prio == prio){
-      ant = atual;
-      atual = atual->prox;
-   }
+   // while(atual != NULL && atual->prio == prio){
+   //    ant = atual;
+   //    atual = atual->prox;
+   // }
    
    if (ant == NULL){
       novo->prox = f->prim;
