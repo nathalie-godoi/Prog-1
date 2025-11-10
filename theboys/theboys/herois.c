@@ -11,7 +11,7 @@
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* ************* Funcoes usadas e disponiveis para os herois ************ */
+/*               Funcoes usadas e disponiveis para os herois              */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Cria um ponteiro para struct heroi */ 

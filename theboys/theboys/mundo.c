@@ -99,6 +99,10 @@ void destroi_mundo(struct mundo *m){
 
 /* Inicializa os campos do mundo */
 void inicia_mundo(struct mundo *mundo){
+   /* Mundo nao existe */
+   if (!mundo)
+      return;
+
    /* Inicializa bases */
    for(int i = 0; i < N_BASES; i++){
       mundo->bases[i] = cria_base();

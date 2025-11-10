@@ -36,7 +36,7 @@
 #include "missao.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/*          Define estrutura do MUNDO e LOCALIZACAO                   */
+/*                     Define estrutura do MUNDO                      */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Define o struct localizacao */

@@ -10,7 +10,7 @@
 #include "mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/*              Especifica Conjunto de Funcoes para MUNDO             */
+/*            Especifica Conjunto de Funcoes para MISSAO              */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Criar missoes com pos e habillidades necessarias aleatorias */

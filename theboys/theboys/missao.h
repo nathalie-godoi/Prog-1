@@ -33,7 +33,7 @@ struct missao {
 };
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/*              Especifica Conjunto de Funcoes para MUNDO             */
+/*             Especifica Conjunto de Funcoes para MISSAO             */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Cria missao com posisao e habillidades necessarias aleatorias 
