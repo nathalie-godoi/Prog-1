@@ -6,23 +6,25 @@
 #define T_FIM_DO_MUNDO 525600
 #define TAMANHO_MUNDO  20000
 #define N_HABILIDADES  10
-#define N_HEROIS 50 
+#define N_HEROIS 50
 #define N_BASES 10
 #define N_MISSOES 5256
 #define N_COMPOSTOS_V 30
 
 
-/* Valor inteiro para tipo de evento */ 
-#define CHEGA 0
-#define ESPERA 1
-#define SAI 2
-#define DESISTE 3
-#define AVISA 4
-#define ENTRA 5
-#define VIAJA 6
-#define MORRE 7
-#define MISSAO 8
-#define FIM 9
+/* ENUM para tipo de evento */
+enum tipo_evento {
+   CHEGA,
+   ESPERA,
+   SAI,
+   DESISTE,
+   AVISA,
+   ENTRA,
+   VIAJA,
+   MORRE,
+   MISSAO,
+   FIM
+};
 
 /* Includes */
 #include <stdio.h>
@@ -52,17 +54,17 @@ struct mundo;
 
 /* Define a estrutura mundo que sera usada */
 struct mundo {
-   int NHerois;
-   struct heroi **herois;
-   int NBases;
-   struct base **bases;
-   int NMissoes;
-   struct missao **missoes;
-   int NHabilidades;
-   int NCompostosV;
-   struct local *dimensao;
-   int Relogio;
-   struct fprio_t *LEF;
+    int NHerois;
+    struct heroi **herois;
+    int NBases;
+    struct base **bases;
+    int NMissoes;
+    struct missao **missoes;
+    int NHabilidades;
+    int NCompostosV;
+    struct local *dimensao;
+    int Relogio;
+    struct fprio_t *LEF;
 };
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -70,7 +72,7 @@ struct mundo {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* Gera valores aleatorios entre min e max */
-int aleat (int min, int max);
+int aleat(int min, int max);
 
 /* Cria e inicia o mapa, retorna NULL em caso de erro */
 struct local *cria_mapa();
@@ -93,5 +95,8 @@ void destroi_mundo(struct mundo *m);
 
 /* Inicializa os campos do mundo */
 void inicia_mundo(struct mundo *mundo);
+
+/* Simula o mundo */
+int simula_mundo(struct mundo *m);
 
 #endif

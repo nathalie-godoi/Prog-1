@@ -178,4 +178,5 @@ void estatistica_missao(struct mundo *m){
    printf("MISSOES CUMPRIDAS: %d/%d (%.1f%%)\n", missoes_completas, m->NMissoes, qnts);
    printf("TENTATIVAS/MISSAO: MIN %d, MAX %d, MEDIA %.1f\n", min, max, MEDIA);
    printf("TAXA MORTALIDADE: %.1f%%\n", mortalidade);
+   printf("COMPOSTOS V USADOS: %d\n", N_COMPOSTOS_V - m->NCompostosV);
 }

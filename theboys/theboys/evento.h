@@ -29,7 +29,7 @@ struct mundo;
  * caso nao haja o campo eh add -1 nele */
 struct evento {
    int data; /* data do evento na LEF */
-   int tipo; /* identifica tipo de evento */
+   enum tipo_evento tipo; /* identifica tipo de evento */
    int heroi ; /* ID do heroi */ 
    int ID; /* ID da base ou missao */
 };

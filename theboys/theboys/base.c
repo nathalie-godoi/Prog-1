@@ -80,7 +80,7 @@ int distancia_a_base(struct base *b, struct local *d){
    int r, n1, n2;
    n1 = b->local->x - d->x;  
    n2 = b->local->y - d->y;
-   r = (int)sqrt((double)(n1*n1 + n2*n2));
+   r = sqrt((n1*n1 + n2*n2));
    return r;
 }
 
@@ -171,12 +171,8 @@ void calcula_habilidades_base(struct base *b, struct mundo *m){
       if (m->herois[i]){
          /* se o heroi existe e pertence eh criado um 
           * novo conjunto a partir da uniao dos outros */
-         if (cjto_pertence(b->presentes, m->herois[i]->ID)){ 
-            struct cjto_t *novo = cjto_uniao(b->habilidades, m->herois[i]->habilidades);
-            /* destroi conjunto antigo */
-            cjto_destroi(b->habilidades);
-            b->habilidades = novo;
-         }
+         if (cjto_pertence(b->presentes, m->herois[i]->ID)) 
+            uni_habilidades(b, m->herois[i]->habilidades); /* add habilidades do heroi a base */
       }
    }
 }
@@ -221,7 +217,18 @@ void entra_base(struct base *b, struct heroi *h, struct mundo *m){
    /* Entra na base */
    cjto_insere(b->presentes, h->ID);
    h->base = b->ID;
-   calcula_habilidades_base(b,m);
+   calcula_habilidades_base(b, m);
+}
+
+/* Uni as habilidades do heroi com a base b */
+void uni_habilidades(struct base *b, struct cjto_t *h_habilidades){
+   if (!b || !h_habilidades)
+      return;
+   /* cria um conjunto uniao */
+   struct cjto_t *novo = cjto_uniao(b->habilidades, h_habilidades);
+   /* destroi conjunto antigo */
+   cjto_destroi(b->habilidades);
+   b->habilidades = novo;
 }
 
 /* Entra na fila de espera e porteiro e avisado para verificar fila */

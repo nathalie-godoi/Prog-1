@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "fprio.h"
 #include "fila.h"
 #include "conjunto.h"
@@ -102,6 +103,9 @@ void inicia_mundo(struct mundo *mundo){
    /* Mundo nao existe */
    if (!mundo)
       return;
+   
+   /* Inicia srand time */
+   srand(time(NULL));
 
    /* Inicializa bases */
    for(int i = 0; i < N_BASES; i++){
@@ -120,4 +124,32 @@ void inicia_mundo(struct mundo *mundo){
    /* Inicializa missoes */
    for(int i = 0; i < N_MISSOES; i++)
       mundo->missoes[i] = cria_missao(i); 
+}
+
+/* Simula o mundo */
+int simula_mundo(struct mundo *m){
+   /* Inicia eventos iniciais */
+   if (!eventos_iniciais(m)){
+      destroi_mundo(m);
+      free(m);
+      return 1;
+   }
+
+   /* Inicia simulacao retirando eventos da LEF */
+   struct evento *evento_atual = remove_evento(m->LEF);
+   int NEventos = 0;
+   while(evento_atual != NULL && evento_atual->tipo != FIM){
+      processa_evento(m, evento_atual);
+      evento_atual = remove_evento(m->LEF);
+      NEventos++;
+   }
+
+   /* Evento atual fim do mundo */
+   if (evento_atual!= NULL && evento_atual->tipo == FIM)
+      processa_evento(m, evento_atual);
+
+   /* Finaliza simulacao destruindo o mundo e seus objetos */
+   printf("EVENTOS TRATADOS: %d\n", NEventos);
+   free(m);
+   return 0;
 }

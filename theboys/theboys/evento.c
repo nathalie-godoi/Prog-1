@@ -86,16 +86,15 @@ void processa_evento(struct mundo *m, struct evento *e){
    /* Evento nao existe ou mundo ou lista de eventos nao existem */ 
    if (!e || !m || !m->LEF)
       return; // Erro
-   /* Atualiza horario do mundo */ 
-   int tipo = e->tipo;
+   /* Atualiza horario do mundo */
    m->Relogio = e->data;
    
    /* Decide qual evento sera executado */
-   switch (tipo) {
+   switch (e->tipo) {
       case CHEGA:
          chega(e->data, e->heroi, e->ID, m);
          break; // chega
-      case ESPERA: 
+      case ESPERA:
          espera(e->data, e->heroi, e->ID, m);
          break; // espera - wait
       case SAI: 

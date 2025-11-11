@@ -20,29 +20,7 @@ int main ()
    /* Inicia os campos do mundo */
    inicia_mundo(terra); 
 
-   /* Inicia eventos iniciais */
-   if (!eventos_iniciais(terra)){
-      destroi_mundo(terra);
-      free(terra);
-      return 1;
-   }
-   
-   /* Inicia simulacao retirando eventos da LEF */
-   struct evento *evento_atual = remove_evento(terra->LEF);
-   int NEventos = 0;
-   while(evento_atual != NULL && evento_atual->tipo != FIM){ 
-      processa_evento(terra, evento_atual);
-      evento_atual = remove_evento(terra->LEF);
-      NEventos++;
-   }
-   
-   /* Evento atual fim do mundo */
-   if (evento_atual!= NULL && evento_atual->tipo == FIM)
-      processa_evento(terra, evento_atual);
-   
-   /* Finaliza simulacao destruindo o mundo e seus objetos */
-   printf("EVENTOS TRATADOS: %d\n", NEventos);
-   free(terra);
-   return 0;
+   /* Executa simulacao do mundo */
+   return simula_mundo(terra);
 }
 
