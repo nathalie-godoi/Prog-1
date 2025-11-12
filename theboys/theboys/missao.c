@@ -155,7 +155,7 @@ void estatistica_missao(struct mundo *m){
    for (int i = 0; i < m->NMissoes; i++){
       if (m->missoes[i]){
          if (m->missoes[i]->tentativas < min)
-            min = m->missoes[i]->tentativas; 
+            min = m->missoes[i]->tentativas;
          if (m->missoes[i]->tentativas > max)
             max = m->missoes[i]->tentativas;
          if (m->missoes[i]->status == 1)
@@ -173,6 +173,7 @@ void estatistica_missao(struct mundo *m){
    for (int i = 0; i < m->NHerois; i++)
       if (m->herois[i] && m->herois[i]->vivo == 0)
          mortalidade++;
+   
    /* Imprime estatisticas extras */
    mortalidade = (mortalidade/ (float)m->NHerois) * 100;
    printf("MISSOES CUMPRIDAS: %d/%d (%.1f%%)\n", missoes_completas, m->NMissoes, qnts);

@@ -136,9 +136,10 @@ struct heroi *encontra_heroi_mundo(int id_heroi, struct mundo *m){
    if (!m || !m->herois || id_heroi < 0 || id_heroi >= m->NHerois)
       return NULL;
    struct heroi *h = m->herois[id_heroi];
-   if (h && h->vivo)
+   if (h)
       return h;
-   /* heroi morto */
+   
+   /* heroi nao existe */
    return NULL;
 }
 
