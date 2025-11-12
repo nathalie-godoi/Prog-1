@@ -46,7 +46,6 @@ void cria_evento(int tempo, int id_heroi, int ID, int tipo, struct mundo *mundo)
    if (tempo > T_FIM_DO_MUNDO)
       return;
 
-   //printf("EVENTO %c NO TEMPO %d\n", tipo, tempo);
    struct evento *e = malloc(sizeof(struct evento));
    if (!e)
       return;
@@ -235,7 +234,7 @@ void avisa (int tempo, int id_base, struct mundo *m){
       
       /* Se heroi existe e esta vivo entra base */
       if (h && h->vivo){
-         entra_base(b, h, m);  
+         entra_base(b, h);  
          printf("%6d: AVISA PORTEIRO BASE %d ADMITE %2d\n", tempo, id_base, h->ID);   
          cria_evento(tempo, h->ID, id_base, ENTRA, m); // evento entra
       }

@@ -209,7 +209,7 @@ int base_aleatoria(int NBases){
 }
 
 /* Atualiza os herois na base */
-void entra_base(struct base *b, struct heroi *h, struct mundo *m){
+void entra_base(struct base *b, struct heroi *h){
    if (!b || !h)
       return;
    if (!b->presentes)
@@ -217,10 +217,10 @@ void entra_base(struct base *b, struct heroi *h, struct mundo *m){
    /* Entra na base */
    cjto_insere(b->presentes, h->ID);
    h->base = b->ID;
-   calcula_habilidades_base(b, m);
+   uni_habilidades(b, h->habilidades);
 }
 
-/* Uni as habilidades do heroi com a base b */
+/* Uniao das habilidades do heroi com a da base b */
 void uni_habilidades(struct base *b, struct cjto_t *h_habilidades){
    if (!b || !h_habilidades)
       return;

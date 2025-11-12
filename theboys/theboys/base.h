@@ -108,7 +108,7 @@ int verifica_espera(struct base *b);
 int base_aleatoria(int NBases); 
 
 /* Adiciona heroi na base e atualiza o conjunto de habilidades da base */
-void entra_base(struct base *b, struct heroi *h, struct mundo *m);
+void entra_base(struct base *b, struct heroi *h);
 
 /* Uni as habilidades do heroi com a base b */
 void uni_habilidades(struct base *b, struct cjto_t *h_habilidades);
