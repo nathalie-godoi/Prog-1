@@ -59,10 +59,6 @@ int calcula_permanencia(struct heroi *h);
 /* Atualiza experiencia apos concluir missao  + 7 */
 void atualiza_exp(struct heroi *h);
 
-/* Atualiza as habilidades que o heroi h possui para concluir missao 
- * Nesse caso o composto V eh usado */
-void atualiza_habli(struct heroi *h, struct missao *m);
-
 /* Retorna velocidade do heroi ou -1 se erro */
 int velo_heroi(struct heroi *h);
 

@@ -30,13 +30,13 @@ struct missao *cria_missao(int n){
 
 /* Destroi missao */
 void destroi_missoes(struct missao **m){
-   if(!m)
+   if (!m)
       return;
    for(int i = 0; i < N_MISSOES; i++){
-      if(m[i]){
-         if(m[i]->habilidades)
+      if (m[i]){
+         if (m[i]->habilidades)
             cjto_destroi(m[i]->habilidades); /* destroi cjto de hab */
-         if(m[i]->local)
+         if (m[i]->local)
             destroi_local(m[i]->local); /* destroi struct local */
          free(m[i]); /* destroi missao */
       }
@@ -121,7 +121,7 @@ int testa_CompostoV(struct mundo *m){
 
 /* Usa composto V, da as habilidades necessarias ao heroi */
 void usa_compostoV(struct heroi *h, struct missao *missao, struct mundo *mundo){
-   /* União entre habilidades necessarias para missao e habilidades do heroi    */
+   /* União entre habilidades necessarias para missao e habilidades do heroi */
    struct cjto_t *habilidades_novas = cjto_uniao(missao->habilidades, h->habilidades);
    struct cjto_t *aux = h->habilidades;
 

@@ -47,7 +47,7 @@ struct local *local_aleat(){
 
 /* Destroi local aleatorio */
 void destroi_local(struct local *l){
-   if(!l)
+   if (!l)
       return;
    free(l);
 }

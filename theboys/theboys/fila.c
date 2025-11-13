@@ -83,11 +83,10 @@ int fila_insere (struct fila_t *f, void *item){
    /* Adiciona no fim da fila */
    else {
    f->fim->prox = novo;
-   novo->prox = NULL;
    f->fim = novo;
    }
    f->num++;
-   return 1;
+   return f->num;
 }
 
 /* Retira primeiro nodo da fila 

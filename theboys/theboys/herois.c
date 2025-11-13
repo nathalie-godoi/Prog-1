@@ -32,18 +32,18 @@ void inicia_heroi(struct heroi *h, int qntd_h){
    h->paciencia = aleat(0, 100);
    h->velo = aleat(50, 5000);
    h->habilidades = cjto_aleat(aleat(1, 3), 10); // Conjunto de 1 a 3 elementos de 0..10
-   h->base = N_BASES; // SEM BASE  
+   h->base = -1; // SEM BASE  
    h->vivo = 1; // VIVO
 }
 
 /* Destroi os vetor de pontiros para herois */
 void destroi_herois(struct heroi **h){
    /* Ponteiro nao existe */
-   if(!h)
+   if (!h)
       return;
    /* Percorre e desaloca os herois */
    for(int i = 0; i < N_HEROIS; i++){
-      if(h[i]){
+      if (h[i]){
          if (h[i]->habilidades)
             cjto_destroi(h[i]->habilidades); // Libera conjunto de habilidades
          free(h[i]);
@@ -76,19 +76,6 @@ int calcula_permanencia(struct heroi *h){
 void atualiza_exp(struct heroi *h){
    if (h)
       h->exp += 7;
-}
-
-/* Atualiza as habilidades que o heroi h possui */
-void atualiza_habli(struct heroi *h, struct missao *m){
-   /* União entre habilidades necessarias para missao e habilidades do heroi*/
-   struct cjto_t *habilidades_novas= cjto_uniao(m->habilidades, h->habilidades);
-   struct cjto_t *aux = h->habilidades;
-
-   /* heroi recebe novas habilidades */
-   h->habilidades = habilidades_novas;
-   
-   /* Desaloca estrutura aux */
-   cjto_destroi(aux);
 }
 
 /* Retorna velocidade do heroi */

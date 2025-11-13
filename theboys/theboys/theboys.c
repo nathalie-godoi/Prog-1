@@ -14,8 +14,8 @@
 
 /* programa principal */
 int main ()
-{
-   struct mundo *terra = cria_mundo(); /* Cria o mundo */
+{  /* Cria o mundo */
+   struct mundo *terra = cria_mundo(); 
    
    /* Inicia os campos do mundo */
    inicia_mundo(terra); 
