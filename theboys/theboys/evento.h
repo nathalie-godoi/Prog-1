@@ -3,12 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "herois.h"
-#include "base.h"
-#include "missao.h"
 #include "mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

@@ -3,13 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "base.h"
-#include "evento.h"
-#include "missao.h"
-#include "mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*                      Define estrutura dos herois                   */

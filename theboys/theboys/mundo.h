@@ -29,13 +29,6 @@ enum tipo_evento {
 /* Includes */
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "herois.h"
-#include "base.h"
-#include "evento.h"
-#include "missao.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*                     Define estrutura do MUNDO                      */

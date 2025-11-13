@@ -3,13 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "herois.h"
-#include "evento.h"
-#include "missao.h"
-#include "mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*           Define estrutura das bases e da localizacao              */
@@ -26,7 +19,6 @@ struct cjto_t;
 struct fila_t;
 struct fprio_t;
 struct heroi;
-struct base;
 struct missao;
 struct mundo;
 
