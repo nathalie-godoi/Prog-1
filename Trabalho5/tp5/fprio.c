@@ -49,8 +49,6 @@ struct fprio_t *fprio_destroi (struct fprio_t *f){
    /* Desaloca nodos */
    while(atual != NULL){
       prox = atual->prox;
-      if(atual->item)
-         free(atual->item);
       free(atual);
       atual = prox;
    }
@@ -76,7 +74,7 @@ int fprio_insere (struct fprio_t *f, void *item, int tipo, int prio){
    /* Garante que o novo item nao existe na fprio */
    while (atual != NULL) {
       if (atual->item == item)
-         return -1; // ERRO
+         return -1;
       atual = atual->prox;
    }
 
@@ -100,7 +98,7 @@ int fprio_insere (struct fprio_t *f, void *item, int tipo, int prio){
       ant = atual;
       atual = atual->prox;
    }
-   // Adiona no inicio
+   
    if (ant == NULL){
       novo->prox = f->prim;
       f->prim = novo;
@@ -117,22 +115,19 @@ int fprio_insere (struct fprio_t *f, void *item, int tipo, int prio){
 /* Retira o primeiro item da fila e o devolve; o tipo e a prioridade */
 void *fprio_retira (struct fprio_t *f, int *tipo, int *prio){
    /* Lista nao alocada */
-   if (f == NULL || f->num == 0)
+   if (f == NULL)
       return NULL;
-   if (f->prim == NULL)
+   /* Lista vazia, tipo null ou prio null*/
+   if (f->num == 0 || tipo == NULL || prio == NULL)
       return NULL;
    /* Remove nodo */
    struct fpnodo_t *prim = f->prim;
    void *item_re = prim->item;
-   if (tipo == NULL) // Retorna NULL erro 
-      return NULL;
-   *tipo = prim->tipo;
-   if (prio == NULL) // Retorna se o ponteiro passado eh valido
-      return NULL;
+   *tipo = prim->tipo; 
    *prio = prim->prio;
    f->prim = prim->prox;
    free(prim);
-   (f->num)--;
+   f->num --;
    return item_re;
 }
 
