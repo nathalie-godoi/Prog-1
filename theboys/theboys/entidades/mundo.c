@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
+#include "../extras/fprio.h"
+#include "../extras/fila.h"
+#include "../extras/conjunto.h"
 #include "herois.h"
 #include "base.h"
-#include "evento.h"
-#include "missao.h"
+#include "../eventos/evento.h"
+#include "../eventos/missao.h"
 #include "mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

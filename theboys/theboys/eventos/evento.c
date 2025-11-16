@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "herois.h"
-#include "base.h"
+#include "../extras/fprio.h"
+#include "../extras/fila.h"
+#include "../extras/conjunto.h"
+#include "../entidades/herois.h"
+#include "../entidades/base.h"
 #include "evento.h"
 #include "missao.h"
-#include "mundo.h"
+#include "../entidades/mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*              Especifica Conjunto de Funcoes para EVENTO            */
@@ -384,10 +384,10 @@ void missao(int tempo, int id_missao, struct mundo *m){
    else {
       if (testa_CompostoV(m) && qntd_CompostosV(m) > 0){  
          /* Procura heroi mais experiente na base */
-         struct heroi *aux = heroiExp(b, m);
-         if (aux && aux->vivo){
+         struct heroi *h_exp = heroiExp(b, m);
+         if (h_exp && h_exp->vivo){
             /* Usa composto para adquirir habili necessarias e completa missao */
-            usa_compostoV(aux, missao, m);
+            usa_compostoV(h_exp, missao, m);
             completa_missao(missao, b);   
             
             /* Recalcula habilidades da base e imprime status da missao */
@@ -395,7 +395,7 @@ void missao(int tempo, int id_missao, struct mundo *m){
             imprime_missao_completa(tempo, id_missao, b);
             /* Atualiza experiencias dos outros heroi */
             aumenta_XP_herois(m,b);
-            cria_evento(tempo, aux->ID, id_missao, MORRE, m); // evento morre
+            cria_evento(tempo, h_exp->ID, id_missao, MORRE, m); // evento morre
          }
          else 
             adia_missao(tempo, missao, m); // adia missao pois heroi nao existe

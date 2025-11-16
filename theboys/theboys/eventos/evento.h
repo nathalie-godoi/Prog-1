@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "mundo.h"
+#include "../entidades/mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*                 Define estrutura de um evento                      */

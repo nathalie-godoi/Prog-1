@@ -1,8 +1,8 @@
 #include "fila.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "herois.h"
-#include "conjunto.h"
+#include "../entidades/herois.h"
+#include "../extras/conjunto.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*              Especifica Conjunto de Funcoes para FILA              */

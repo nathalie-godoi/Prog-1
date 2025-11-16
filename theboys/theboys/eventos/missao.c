@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fprio.h"
-#include "fila.h"
-#include "conjunto.h"
-#include "herois.h"
-#include "base.h"
+#include "../extras/fprio.h"
+#include "../extras/fila.h"
+#include "../extras/conjunto.h"
+#include "../entidades/herois.h"
+#include "../entidades/base.h"
 #include "evento.h"
 #include "missao.h"
-#include "mundo.h"
+#include "../entidades/mundo.h"
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /*            Especifica Conjunto de Funcoes para MISSAO              */
